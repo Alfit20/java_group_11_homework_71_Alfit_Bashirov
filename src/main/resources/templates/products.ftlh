@@ -1,5 +1,6 @@
+<#import "/spring.ftl" as spring />
 <!DOCTYPE html>
-<html lang="en">
+<html lang="${.locale}">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +11,7 @@
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="icon" href="data:,">
     <link rel="stylesheet" href="/css/productsStyle.css">
-    <title>Products</title>
+    <title><@spring.message "products"/></title>
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark">
@@ -19,16 +20,16 @@
         <div class="test">
             <div class="child2">
                 <a class="buttons-link" href="/registration">
-                    <button class="buttons">Зарегистрироваться</button>
+                    <button class="buttons"><@spring.message "sign_up"/></button>
                 </a>
                 <a class="buttons-link" href="/login">
-                    <button class="buttons">Войти</button>
+                    <button class="buttons"><@spring.message "sign_in"/></button>
                 </a>
                 <a class="buttons-link" href="/profile">
-                    <button class="buttons">Профиль</button>
+                    <button class="buttons"><@spring.message "profile"/></button>
                 </a>
                 <a class="buttons-link" href="/cart">
-                    <button class="buttons">Моя корзина</button>
+                    <button class="buttons"><@spring.message "my_cart"/></button>
                 </a>
             </div>
             <form class="flex box-128" action="/logout" method="post">
@@ -36,10 +37,17 @@
                     <input type="hidden" name="${(_csrf.parameterName)!'csrf'}"
                            value="${(_csrf.token)!'--no-token--'}"/>
                 </#if>
-                <button class="buttons">Выйти</button>
+                <button class="buttons"><@spring.message "log_out"/></button>
             </form>
         </div>
     </div>
+    <form action="" method="get">
+        <select name="lang" id="lang_select">
+            <option value="ru">Русский</option>
+            <option value="en">English</option>
+        </select>
+        <button type="submit">Choose</button>
+    </form>
 </nav>
 <div class="container">
     <form action="/search" class="form" id="search" method="get">
@@ -48,19 +56,19 @@
         </#if>
         <div class="col-auto">
             <select name="searchBy" id="searchBy">
-                <option value="name">По наименованию</option>
-                <option value="price">По цене</option>
-                <option value="category">По категориям</option>
-                <option value="description">По описанию</option>
+                <option value="name"><@spring.message "by_name"/></option>
+                <option value="price"><@spring.message "by_price"/></option>
+                <option value="category"><@spring.message "by_category"/></option>
+                <option value="description"><@spring.message "by_description"/></option>
             </select>
             <input type="text" name="search">
-            <input type="submit" value="Search">
+            <input type="submit" value="<@spring.message "search"/>">
         </div>
     </form>
 </div>
 
 <div class="container" id="container">
-    <h1 class="sub-title-2 text-uppercase text-center py-4">Интернет-магазин Компьютерной техники</h1>
+    <h1 class="sub-title-2 text-uppercase text-center py-4"><@spring.message "title"/></h1>
     <#--    <#list sessionAttributes as key, value>-->
     <#--        <div class="border"><span class="key-cell">${key}</span><span class="value-cell">${value}</span></div>-->
     <#--    </#list>-->

@@ -28,7 +28,7 @@ public class AuthUserDetailsService {
     private final PasswordEncoder encoder;
     private final Map<String, String> localhHash = new HashMap<>();
     private final CustomerService customerService;
-    private final AuthenticationManager authenticationManager;
+//    private final AuthenticationManager authenticationManager;
 
     public boolean checkUser(String email) {
         return customerRepository.existsByEmail(email);
