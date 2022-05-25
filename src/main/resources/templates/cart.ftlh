@@ -1,5 +1,6 @@
+<#import "/spring.ftl" as spring />
 <!doctype html>
-<html lang="en">
+<html lang="${.locale}">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,20 +17,20 @@
 <body>
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand">Products</a>
+        <a class="navbar-brand"><@spring.message "products"/></a>
         <div class="test">
             <div class="child2">
                 <a class="buttons-link" href="/registration">
-                    <button class="buttons">Зарегистрироваться</button>
+                    <button class="buttons"><@spring.message "sign_up"/></button>
                 </a>
                 <a class="buttons-link" href="/login">
-                    <button class="buttons">Войти</button>
+                    <button class="buttons"><@spring.message "sign_in"/></button>
                 </a>
                 <a class="buttons-link" href="/profile">
-                    <button class="buttons">Профиль</button>
+                    <button class="buttons"><@spring.message "profile"/></button>
                 </a>
                 <a class="buttons-link" href="/cart">
-                    <button class="buttons">Моя корзина</button>
+                    <button class="buttons"><@spring.message "my_cart"/></button>
                 </a>
             </div>
             <form class="flex box-128" action="/logout" method="post">
@@ -37,7 +38,7 @@
                     <input type="hidden" name="${(_csrf.parameterName)!'csrf'}"
                            value="${(_csrf.token)!'--no-token--'}"/>
                 </#if>
-                <button class="buttons">Выйти</button>
+                <button class="buttons"><@spring.message "log_out"/></button>
             </form>
         </div>
     </div>
@@ -50,10 +51,10 @@
         </#if>
         <thead>
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Price</th>
-            <th scope="col">Quantity <input type="submit" value="Update" class="update" id="update"></th>
-            <th scope="col">Action</th>
+            <th scope="col"><@spring.message "name"/></th>
+            <th scope="col"><@spring.message "price"/></th>
+            <th scope="col"><@spring.message "quantity"/> <input type="submit" value="Update" class="update" id="update"></th>
+            <th scope="col"><@spring.message "action"/></th>
         </tr>
         </thead>
         <tbody>
@@ -71,28 +72,28 @@
                        value="${(_csrf.token)!'--no-token--'}"/>
             </#if>
             <input type="text" name="taskId" value="${item.id}" hidden>
-            <input type="submit" value="Delete" class="delete">
+            <input type="submit" value="<@spring.message "delete"/>" class="delete">
         </form>
     </td>
     </tr>
     </#list>
     </tbody>
 </table>
-<a href="/">Назад к продуктам</a>
+<a href="/"><@spring.message "go_to_products"/></a>
 
 
 <div class="card border-primary mb-3" style="max-width: 18rem;">
-    <div class="card-header">Totals</div>
+    <div class="card-header"><@spring.message "totals"/></div>
     <table class="table">
         <tbody>
         <tr>
-            <th>TotalSum</th>
+            <th><@spring.message "total_sum"/></th>
             <td>${sum}</td>
         </tr>
         </tbody>
     </table>
     <form action="/order" method="post">
-        <button type="submit" class="btn btn-dark">Оформить заказ</button>
+        <button type="submit" class="btn btn-dark"><@spring.message "checkout"/></button>
     </form>
 </div>
 

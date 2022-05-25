@@ -1,5 +1,6 @@
+<#import "/spring.ftl" as spring />
 <!DOCTYPE html>
-<html lang="en">
+<html lang="${.locale}">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,20 +16,20 @@
 <body>
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand">Products</a>
+        <a class="navbar-brand"><@spring.message "products"/></a>
         <div class="test">
             <div class="child2">
                 <a class="buttons-link" href="/registration">
-                    <button class="buttons">Зарегистрироваться</button>
+                    <button class="buttons"><@spring.message "sign_up"/></button>
                 </a>
                 <a class="buttons-link" href="/login">
-                    <button class="buttons">Войти</button>
+                    <button class="buttons"><@spring.message "sign_in"/></button>
                 </a>
                 <a class="buttons-link" href="/profile">
-                    <button class="buttons">Профиль</button>
+                    <button class="buttons"><@spring.message "profile"/></button>
                 </a>
                 <a class="buttons-link" href="/cart">
-                    <button class="buttons">Моя корзина</button>
+                    <button class="buttons"><@spring.message "my_cart"/></button>
                 </a>
             </div>
             <form class="flex box-128" action="/logout" method="post">
@@ -36,13 +37,13 @@
                     <input type="hidden" name="${(_csrf.parameterName)!'csrf'}"
                            value="${(_csrf.token)!'--no-token--'}"/>
                 </#if>
-                <button class="buttons">Выйти</button>
+                <button class="buttons"><@spring.message "log_out"/></button>
             </form>
         </div>
     </div>
 </nav>
 
-<h1>Пожалуйста оставьте отзыв к купленным товарам</h1>
+<h1><@spring.message "please_leave_review"/></h1>
 
 <div class="container" id="container">
     <div class="row row-cols-2 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">
@@ -57,7 +58,7 @@
                         <p class="price">${product.product.description}</p>
                     </div>
                     <a href="${product.product.id}">
-                        <button type="button" class="btn btn-info">Написать отзыв</button>
+                        <button type="button" class="btn btn-info"><@spring.message "give_feedback"/></button>
                     </a>
                 </div>
             </div>
