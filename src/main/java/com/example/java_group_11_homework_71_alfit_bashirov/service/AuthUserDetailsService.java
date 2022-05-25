@@ -6,6 +6,8 @@ import com.example.java_group_11_homework_71_alfit_bashirov.exception.CustomerNo
 import com.example.java_group_11_homework_71_alfit_bashirov.exception.UserAlreadyRegisteredException;
 import com.example.java_group_11_homework_71_alfit_bashirov.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,6 +28,7 @@ public class AuthUserDetailsService {
     private final PasswordEncoder encoder;
     private final Map<String, String> localhHash = new HashMap<>();
     private final CustomerService customerService;
+    private final AuthenticationManager authenticationManager;
 
     public boolean checkUser(String email) {
         return customerRepository.existsByEmail(email);
@@ -62,7 +65,11 @@ public class AuthUserDetailsService {
 
     public void updatePassword(HttpServletRequest req, String hash) {
         Customer customer = getCustomerByHash(hash);
+        UsernamePasswordAuthenticationToken authReq
+                = new UsernamePasswordAuthenticationToken(customer.getEmail(), hash);
+//        Authentication auth = authenticationManager.authenticate(authReq);
         SecurityContext sc = SecurityContextHolder.getContext();
+//        sc.setAuthentication(auth);
         HttpSession session = req.getSession(true);
         session.setAttribute(SPRING_SECURITY_CONTEXT_KEY, sc);
     }
