@@ -53,7 +53,7 @@
         <tr>
             <th scope="col"><@spring.message "name"/></th>
             <th scope="col"><@spring.message "price"/></th>
-            <th scope="col"><@spring.message "quantity"/> <input type="submit" value="Update" class="update" id="update"></th>
+            <th scope="col"><@spring.message "quantity"/> <input type="submit" value="<@spring.message "update"/>" class="update" id="update"></th>
             <th scope="col"><@spring.message "action"/></th>
         </tr>
         </thead>
