@@ -1,0 +1,13 @@
+.search {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 100px;
+}
+
+.get {
+    font-size: 15px;
+    width: 400px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
