@@ -11,12 +11,12 @@
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="icon" href="data:,">
     <link rel="stylesheet" href="/css/productsStyle.css">
-    <title><@spring.message "products"/></title>
+    <title>Products</title>
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand">Products</a>
+        <a class="navbar-brand"><@spring.message "products"/></a>
         <div class="test">
             <div class="child2">
                 <a class="buttons-link" href="/registration">
@@ -84,7 +84,7 @@
                         <p class="price">${product.price} сом</p>
                         <p class="price">${product.description}</p>
                     </div>
-                    <button type="submit" class="cart" id="${product.id}">В корзину
+                    <button type="submit" class="cart" id="${product.id}"><@spring.message "in_cart"/>
                         <input type="hidden" name="id" value="${product.id}"/>
                     </button>
 

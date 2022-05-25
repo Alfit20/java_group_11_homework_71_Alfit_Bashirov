@@ -1,6 +1,6 @@
 <#import "/spring.ftl" as spring />
 <!DOCTYPE html>
-<html lang="en">
+<html lang="${.locale}">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,20 +18,20 @@
 <body>
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand">Products</a>
+        <a class="navbar-brand"><@spring.message "products"/></a>
         <div class="test">
             <div class="child2">
                 <a class="buttons-link" href="/registration">
-                    <button class="buttons">Зарегистрироваться</button>
+                    <button class="buttons"><@spring.message "sign_up"/></button>
                 </a>
                 <a class="buttons-link" href="/login">
-                    <button class="buttons">Войти</button>
+                    <button class="buttons"><@spring.message "sign_in"/></button>
                 </a>
                 <a class="buttons-link" href="/profile">
-                    <button class="buttons">Профиль</button>
+                    <button class="buttons"><@spring.message "profile"/></button>
                 </a>
                 <a class="buttons-link" href="/cart">
-                    <button class="buttons">Моя корзина</button>
+                    <button class="buttons"><@spring.message "my_cart"/></button>
                 </a>
             </div>
             <form class="flex box-128" action="/logout" method="post">
@@ -39,29 +39,11 @@
                     <input type="hidden" name="${(_csrf.parameterName)!'csrf'}"
                            value="${(_csrf.token)!'--no-token--'}"/>
                 </#if>
-                <button class="buttons">Выйти</button>
+                <button class="buttons"><@spring.message "log_out"/></button>
             </form>
         </div>
     </div>
 </nav>
-
-<#--    <div class="row row-cols-2 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">-->
-<#--        <div class="col" id="itemList">-->
-<#--            <div class="card h-100">-->
-<#--                <div class="card-body text-center">-->
-<#--                    <p>${product.name}</p>-->
-<#--                    <img src="/images/${product.image}" class="card-img-top">-->
-<#--                    <p class="price">${product.price} сом</p>-->
-<#--                    <p class="price">${product.description}</p>-->
-<#--                </div>-->
-<#--                <form action="/cart" method="post" id="cart_form">-->
-<#--                    <button type="submit" class="cart text-center" id="${product.id}">В корзину-->
-<#--                        <input type="hidden" name="id" value="${product.id}"/>-->
-<#--                    </button>-->
-<#--                </form>-->
-<#--            </div>-->
-<#--        </div>-->
-<#--    </div>-->
 
 <div class="row row-cols-1 row-cols-md-1 g-2  mx-auto d-block main" style="width: 20rem;">
     <div class="col main-block">
@@ -71,7 +53,7 @@
                 <p class="price">${product.price} сом</p>
                 <p class="price">${product.description}</p>
                 <form action="/cart" method="post" id="cart_form">
-                    <button type="submit" class="cart text-center" id="${product.id}">В корзину
+                    <button type="submit" class="cart text-center" id="${product.id}"><@spring.message "in_cart"/>
                         <input type="hidden" name="id" value="${product.id}"/>
                     </button>
                 </form>
@@ -81,7 +63,7 @@
 </div>
 
 <div class='closed text-center' onclick='showCloseItem(this)'>
-    <p class="review">Отзывы(${count})</p>
+    <p class="review"><@spring.message "reviews"/>(${count})</p>
     <div class='hiddenItem'>
         <#list reviews as review>
             <div class="container">
@@ -96,12 +78,12 @@
 
 <form action="/review/${product.id}" id="review_form" method="post">
     <#if dto??>
-        <p style="color:red">Чтобы написать отзыв нужно сначала оформить заказ</p>
+        <p style="color:red"><@spring.message "error_reviews"/></p>
     </#if>
-    <label for="message-text" class="col-form-label">Message:</label>
+    <label for="message-text" class="col-form-label"><@spring.message "message"/></label>
     <textarea rows="5" cols="10" class="form-control"
               id="message-text" name="text" required minlength="2"></textarea>
-    <button type="submit" class="btn btn-success">Оставить отзыв</button>
+    <button type="submit" class="btn btn-success"><@spring.message "give_feedback"/></button>
 </form>
 
 
