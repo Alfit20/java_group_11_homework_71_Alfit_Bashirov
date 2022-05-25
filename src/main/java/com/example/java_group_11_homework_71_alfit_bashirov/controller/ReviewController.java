@@ -1,5 +1,7 @@
 package com.example.java_group_11_homework_71_alfit_bashirov.controller;
 
+import com.example.java_group_11_homework_71_alfit_bashirov.dto.ReviewDto;
+import com.example.java_group_11_homework_71_alfit_bashirov.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,7 +27,7 @@ public class ReviewController {
 
     // Чтобы увидеть отзывы нажмите на текст "Отзывы"
     @PostMapping("/review/{id}")
-    public String addReviewToProduct(@PathVariable Long id,  ReviewDto reviewDto, RedirectAttributes attributes) {
+    public String addReviewToProduct(@PathVariable Long id, ReviewDto reviewDto, RedirectAttributes attributes) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = ((UserDetails) principal).getUsername();
         if (!reviewService.checkingCustomerOrder(id, username)) {

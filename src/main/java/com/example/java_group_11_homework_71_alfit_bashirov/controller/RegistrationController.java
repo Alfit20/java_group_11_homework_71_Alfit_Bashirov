@@ -1,5 +1,7 @@
 package com.example.java_group_11_homework_71_alfit_bashirov.controller;
 
+import com.example.java_group_11_homework_71_alfit_bashirov.dto.CustomerDto;
+import com.example.java_group_11_homework_71_alfit_bashirov.service.AuthUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

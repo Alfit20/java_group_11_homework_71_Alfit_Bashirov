@@ -1,5 +1,10 @@
 package com.example.java_group_11_homework_71_alfit_bashirov.controller;
 
+import com.example.java_group_11_homework_71_alfit_bashirov.dto.ProductDto;
+import com.example.java_group_11_homework_71_alfit_bashirov.exception.ResourceNotFoundException;
+import com.example.java_group_11_homework_71_alfit_bashirov.service.ProductService;
+import com.example.java_group_11_homework_71_alfit_bashirov.service.PropertiesService;
+import com.example.java_group_11_homework_71_alfit_bashirov.util.PageUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
