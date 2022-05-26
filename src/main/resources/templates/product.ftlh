@@ -21,6 +21,7 @@
         <a class="navbar-brand"><@spring.message "products"/></a>
         <div class="test">
             <div class="child2">
+                <a href="/"><@spring.message "go_to_products"/></a>
                 <a class="buttons-link" href="/registration">
                     <button class="buttons"><@spring.message "sign_up"/></button>
                 </a>

@@ -16,6 +16,7 @@
             <#if _csrf??>
                 <input type="hidden" name="${(_csrf.parameterName)!'csrf'}" value="${(_csrf.token)!'--no-token--'}"/>
             </#if>
+            <a href="/"><@spring.message "go_to_products"/></a>
             <h3><@spring.message "registration"/></h3>
             <input type="text" name="name" placeholder="<@spring.message "name"/>" value="${(dto.name)!''}" required autofocus/>
             <input type="email" name="email" placeholder="<@spring.message "email"/>" value="${(dto.email)!''}" required/>

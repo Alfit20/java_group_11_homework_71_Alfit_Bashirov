@@ -20,6 +20,7 @@
         <a class="navbar-brand"><@spring.message "products"/></a>
         <div class="test">
             <div class="child2">
+                <a href="/"><@spring.message "go_to_products"/></a>
                 <a class="buttons-link" href="/registration">
                     <button class="buttons"><@spring.message "sign_up"/></button>
                 </a>
@@ -79,7 +80,7 @@
     </#list>
     </tbody>
 </table>
-<a href="/"><@spring.message "go_to_products"/></a>
+
 
 
 <div class="card border-primary mb-3" style="max-width: 18rem;">

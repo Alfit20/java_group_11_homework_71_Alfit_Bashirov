@@ -13,7 +13,9 @@
 <form action="/login" class="login-form" method="post">
 
     <div class="login-page">
+
         <div>
+
             <#if error!false >
                 <p style="color:red"><@spring.message "invalid_username_or_password"/>!</p>
             </#if>
@@ -28,7 +30,7 @@
             <button type="submit"><@spring.message "login"/></button>
             <p class="message"><@spring.message "not_registered"/>? <a href="/registration"><@spring.message "create_an_account"/></a></p>
             <p class="message"><@spring.message "forgot_password"/>? <a href="/restore-password"><@spring.message "restore_password"/></a></p>
-
+            <a href="/"><@spring.message "go_to_products"/></a>
         </div>
     </div>
 </form>
