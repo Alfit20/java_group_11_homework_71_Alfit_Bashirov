@@ -25,11 +25,11 @@ public class CartService {
     private final ProductRepository productRepository;
     private final CustomerRepository customerRepository;
 
-    public void addItemToCart(Long id, String email) {
+    public void addItemToCart(Long id, String email, Integer quantity) {
         var product = productRepository.findById(id).orElseThrow();
         var customerEmail = customerRepository.findByEmail(email).orElseThrow(CustomerNotFoundException::new);
         for (int i = 0; i < getCartProducts(email).size(); i++) {
-            if(getCartProducts(email).get(i).getProduct().getName().equals(product.getName())) {
+            if (getCartProducts(email).get(i).getProduct().getName().equals(product.getName())) {
                 throw new ResourceNotFoundException("Такой товар уже есть");
             }
         }
@@ -37,6 +37,7 @@ public class CartService {
                 .price(product.getPrice())
                 .product(product)
                 .customer(customerEmail)
+                .quantity(quantity)
                 .build());
     }
 

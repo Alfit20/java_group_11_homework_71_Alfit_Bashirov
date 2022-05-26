@@ -42,8 +42,14 @@
             </form>
         </div>
     </div>
+    <form action="" method="get">
+        <select name="lang" id="lang_select">
+            <option value="ru">Русский</option>
+            <option value="en">English</option>
+        </select>
+        <button type="submit"><@spring.message "choose"/></button>
+    </form>
 </nav>
-
 <div class="container" id="container">
     <div class="row row-cols-2 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">
         <#list products as product>

@@ -1,9 +1,11 @@
 package com.example.java_group_11_homework_71_alfit_bashirov.service;
 
+import com.example.java_group_11_homework_71_alfit_bashirov.dto.CartDto;
 import com.example.java_group_11_homework_71_alfit_bashirov.dto.ProductDto;
 import com.example.java_group_11_homework_71_alfit_bashirov.dto.ReviewDto;
 import com.example.java_group_11_homework_71_alfit_bashirov.entity.Product;
 import com.example.java_group_11_homework_71_alfit_bashirov.exception.ResourceNotFoundException;
+import com.example.java_group_11_homework_71_alfit_bashirov.repository.CartRepository;
 import com.example.java_group_11_homework_71_alfit_bashirov.repository.OrderRepository;
 import com.example.java_group_11_homework_71_alfit_bashirov.repository.ProductRepository;
 import com.example.java_group_11_homework_71_alfit_bashirov.repository.ReviewRepository;
@@ -20,8 +22,7 @@ import java.util.stream.Collectors;
 public class ProductService {
     private final ProductRepository productRepository;
     private final ReviewRepository reviewRepository;
-    private final OrderRepository orderRepository;
-
+    private final CartRepository cartRepository;
 
     // Постраничное отображение списка товаров.
     public Page<ProductDto> getProducts(Pageable pageable) {
@@ -68,9 +69,6 @@ public class ProductService {
     public int countReviews(Long id) {
         return getAllProductReviews(id).size();
     }
-
-
-
 
 }
 

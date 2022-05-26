@@ -40,6 +40,13 @@
             </form>
         </div>
     </div>
+    <form action="" method="get">
+        <select name="lang" id="lang_select">
+            <option value="ru">Русский</option>
+            <option value="en">English</option>
+        </select>
+        <button type="submit"><@spring.message "choose"/></button>
+    </form>
 </nav>
 <h3><@spring.message "your_new_password"/>: ${newPassword}</h3>
 <a href="/login"><@spring.message "go_to_login"/></a>

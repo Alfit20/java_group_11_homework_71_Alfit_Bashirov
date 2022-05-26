@@ -44,6 +44,13 @@
             </form>
         </div>
     </div>
+    <form action="" method="get">
+        <select name="lang" id="lang_select">
+            <option value="ru">Русский</option>
+            <option value="en">English</option>
+        </select>
+        <button type="submit"><@spring.message "choose"/></button>
+    </form>
 </nav>
 
 <div class="row row-cols-1 row-cols-md-1 g-2  mx-auto d-block main" style="width: 20rem;">

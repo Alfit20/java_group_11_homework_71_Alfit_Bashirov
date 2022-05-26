@@ -1,9 +1,13 @@
 package com.example.java_group_11_homework_71_alfit_bashirov.controller;
 
+import com.example.java_group_11_homework_71_alfit_bashirov.dto.CartDto;
 import com.example.java_group_11_homework_71_alfit_bashirov.exception.ErrorResponse;
 import com.example.java_group_11_homework_71_alfit_bashirov.service.CartService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -32,15 +36,36 @@ public class CartController {
     }
 
 
+//    @PostMapping("{id}")
+//    @ResponseBody
+//    public ResponseEntity<Void> addToCart(@PathVariable Long id, HttpSession session, @RequestBody String json) throws JsonProcessingException {
+////        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+////        String username = ((UserDetails) principal).getUsername();
+////        cartService.addItemToCart(id, username, quantity);
+////        cartService.addItemToSession(id, session);
+//        var x = new ObjectMapper().readValue(json, CartDto.class);
+//        return ResponseEntity.ok().build();
+//    }
+
     @PostMapping("{id}")
-    @ResponseBody
-    public boolean addToCart(@PathVariable Long id, HttpSession session) {
+    public String addToCart(@RequestParam(value = "quantity") Integer quantity, @PathVariable Long id, HttpSession session) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = ((UserDetails) principal).getUsername();
-        cartService.addItemToCart(id, username);
+        cartService.addItemToCart(id, username, quantity);
         cartService.addItemToSession(id, session);
-        return true;
+        return "redirect:/cart";
     }
+
+//    @PostMapping("{id}")
+//    @ResponseBody
+//    public boolean addToCart(@RequestParam(value = "quantity") Integer quantity, @PathVariable Long id, HttpSession session) {
+//        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        String username = ((UserDetails) principal).getUsername();
+//        cartService.addItemToCart(id, username, quantity);
+//        cartService.addItemToSession(id, session);
+//        return true;
+//    }
+
 
     @PostMapping("/delete/{id}")
     public String deleteProduct(@PathVariable Long id) {

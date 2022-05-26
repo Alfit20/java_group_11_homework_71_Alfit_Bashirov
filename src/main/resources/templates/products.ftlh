@@ -47,7 +47,7 @@
             <option value="ru">Русский</option>
             <option value="en">English</option>
         </select>
-        <button type="submit">Choose</button>
+        <button type="submit"><@spring.message "choose"/></button>
     </form>
 </nav>
 <div class="container">
@@ -74,8 +74,12 @@
     <#--        <div class="border"><span class="key-cell">${key}</span><span class="value-cell">${value}</span></div>-->
     <#--    </#list>-->
     <div class="row row-cols-2 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">
-        <form action="/cart" method="post" id="cart_form">
+<#--        <form action="/cart" method="post" id="cart_form">-->
             <#list products as product>
+                <form action="/cart/${product.id}" method="post" id="cart_form">
+            <#if _csrf??>
+                <input type="hidden" name="${(_csrf.parameterName)!'csrf'}" value="${(_csrf.token)!'--no-token--'}"/>
+            </#if>
             <div class="col" id="itemList">
                 <div class="card h-100">
                     <div class="card-body text-center">
@@ -85,9 +89,10 @@
                         <p class="price">${product.price} сом</p>
                         <p class="price">${product.description}</p>
                     </div>
-                    <button type="submit" class="cart" id="${product.id}"><@spring.message "in_cart"/>
-                        <input type="hidden" name="id" value="${product.id}"/>
-                    </button>
+                    <input type="number" name="quantity" value="1" min="1" max="10" class="quantity" id="quantity"/>
+                    <button type="submit" class="cart" id="${product.id}"><@spring.message "in_cart"/></button>
+
+
 
                 </div>
             </div>

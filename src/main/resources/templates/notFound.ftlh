@@ -38,8 +38,15 @@
             </form>
         </div>
     </div>
+    <form action="" method="get">
+        <select name="lang" id="lang_select">
+            <option value="ru">Русский</option>
+            <option value="en">English</option>
+        </select>
+        <button type="submit"><@spring.message "choose"/></button>
+    </form>
 </nav>
-<h1><@spring.message "search"/> ${message}<@spring.message "turned_out"/></h1>
+<h1><@spring.message "search"/> ${message} <@spring.message "turned_out"/></h1>
 
 
 

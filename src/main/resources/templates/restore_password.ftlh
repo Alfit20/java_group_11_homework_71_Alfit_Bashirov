@@ -40,6 +40,13 @@
             </form>
         </div>
     </div>
+    <form action="" method="get">
+        <select name="lang" id="lang_select">
+            <option value="ru">Русский</option>
+            <option value="en">English</option>
+        </select>
+        <button type="submit"><@spring.message "choose"/></button>
+    </form>
 </nav>
 <h2 class="text-center"><@spring.message "enter_restore_password"/></h2>
 <form action="/restore-password" class="row g-3" method="post">
